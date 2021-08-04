@@ -1,0 +1,2 @@
+Step 1: Prompt the user to enter first name
+Step 2:
