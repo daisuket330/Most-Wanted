@@ -1,5 +1,5 @@
-Step 1:Select criterion to be used (first name)
-Step 2:Prompt the user to enter first name
+Step 1:Select criterion to be used (gender)
+Step 2:Prompt the user to enter gender.
 Step 3:If the user input is found within the array, it will return true. 
-If first name is not found within the array, it will return false. 
+If gender is not found within the array, it will return false. 
 Step 4:Return result
