@@ -8,23 +8,31 @@
 
 // app is the function called to start the entire application
 function searchByGender(app){
-  let searchType = promptFor("Do you know the gender of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
-  let searchResults;
-  switch(searchType){
-    case 'yes':
-      
-      searchResults = searchByGender(app);
-      break;
+}
+let searchType = promptFor("Do you know the gender of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
+let searchResults;
+switch(searchType){
+  case 'yes':
+    if (searchType === 'yes') {prompt("what is the persons gender?")}
+
+    searchResults = searchByGender(app);
+    break;
     case 'no':
+      if (searchType === 'no') {prompt("what is the persons occupation?")}
       // TODO: search by traits
       break;
       default:
-    searchByGender(app); // restart app
-      break;
-  }
-
-  // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  mainMenu(searchResults, people);
+        searchByGender(app); // restart app
+        break;
+      }
+      for (let i=0;i<app.gender; i++){
+        if (app.gender === female){
+          console.log("this person is a woman")
+        }
+        else console.log("this person is a man")
+      
+      // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
+      mainMenu(searchResults, people);
 }
 
 // Menu function to call once you find who you are looking for
@@ -34,7 +42,7 @@ function mainMenu(person, people){
 
   if(!person){
     alert("Could not find that individual.");
-    return app(people); // restart
+    return searchByGender(data); // restart
   }
 
   let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);

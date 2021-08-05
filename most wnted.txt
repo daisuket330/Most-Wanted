@@ -1,0 +1,17 @@
+user story#1
+create function
+prompt user 
+first i want to be able to search a person by one criteria from an array of options
+
+if the search meets the criteria it should return true
+if false it wont return
+
+for example: if the criteria is name,and the elements are [alpha,bravo,charlie,delta];
+and i'm searching for charlie
+i want the function to ultimatley eliminate all other elements but charlie
+and return charlie
+to do this i can filter by first letter
+
+user story# 2
+
+i want to be able to find a person based on 5 criteria
