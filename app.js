@@ -7,23 +7,26 @@
 //#region 
 
 // app is the function called to start the entire application
-function searchByGender(app){
-  let searchType = promptFor("Do you know the gender of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
+function app(people){
+  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   let searchResults;
   switch(searchType){
     case 'yes':
-      searchResults = searchByGender(app);
+      searchResults = searchByName(people);
       break;
     case 'no':
       // TODO: search by traits
+      searchResults = searchByTraits(people);
+       // TODO: once we have filtered results from our search functions
+        // write a function to list all the options and let the user pick one person to pass
+       // into the mainMenu function
       break;
       default:
-    searchByGender(app); // restart app
+    app(people); // restart app
       break;
   }
+ 
 
-  
-  
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
 }
@@ -35,7 +38,7 @@ function mainMenu(person, people){
 
   if(!person){
     alert("Could not find that individual.");
-    return searchByGender(data); // restart
+    return app(people); // restart
   }
 
   let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
@@ -59,6 +62,8 @@ function mainMenu(person, people){
     return mainMenu(person, people); // ask again
   }
 }
+
+
 
 //#endregion
 
@@ -84,8 +89,22 @@ function searchByName(people){
   return foundPerson;
 }
 
+// TODO: write a function that prompts the user for which trait they would like to search for
+// then, call a function depending on which trait they want
+// and return the results of the filter
+
+function searchByTraits(people){
+  let results = searchByGender(people)
+  return results;
+
+}
+
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
+
+}
+
+function searchByGender(people){
 
 }
 
@@ -130,13 +149,11 @@ function displayPerson(person){
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
 function promptFor(question, valid){
-  let response;
-  let isValid;
   do{
-    response = prompt(question).trim();
+    var response = prompt(question).trim();
     isValid = valid(response);
   } while(response === ""  ||  isValid === false)
-  return response
+  return response;
 }
 
 // helper function/callback to pass into promptFor to validate yes/no answers.
