@@ -7,18 +7,18 @@
 //#region 
 
 // app is the function called to start the entire application
-function app(people){
-  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
+function searchByGender(data){
+  let searchType = promptFor("Do you know the gender of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   let searchResults;
   switch(searchType){
     case 'yes':
-      searchResults = searchByName(people);
+      searchResults = searchByGender(data);
       break;
     case 'no':
       // TODO: search by traits
       break;
       default:
-    app(people); // restart app
+    searchByGender(data); // restart app
       break;
   }
   
@@ -33,7 +33,7 @@ function mainMenu(person, people){
 
   if(!person){
     alert("Could not find that individual.");
-    return app(people); // restart
+    return searchByGender(data); // restart
   }
 
   let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
