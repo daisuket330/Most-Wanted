@@ -12,6 +12,7 @@ function searchByGender(app){
   let searchResults;
   switch(searchType){
     case 'yes':
+      
       searchResults = searchByGender(app);
       break;
     case 'no':
@@ -21,7 +22,7 @@ function searchByGender(app){
     searchByGender(app); // restart app
       break;
   }
-  
+
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
 }
