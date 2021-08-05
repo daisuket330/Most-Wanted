@@ -7,18 +7,18 @@
 //#region 
 
 // app is the function called to start the entire application
-function searchByGender(data){
+function searchByGender(app){
   let searchType = promptFor("Do you know the gender of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   let searchResults;
   switch(searchType){
     case 'yes':
-      searchResults = searchByGender(data);
+      searchResults = searchByGender(app);
       break;
     case 'no':
       // TODO: search by traits
       break;
       default:
-    searchByGender(data); // restart app
+    searchByGender(app); // restart app
       break;
   }
   
@@ -133,7 +133,7 @@ function promptFor(question, valid){
   do{
     response = prompt(question).trim();
     isValid = valid(response);
-  } while(response !== ""  ||  isValid === false)
+  } while(response === ""  ||  isValid === false)
   return response
 }
 
