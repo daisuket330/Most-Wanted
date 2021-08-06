@@ -93,30 +93,43 @@ function searchByName(people){
 // TODO: write a function that prompts the user for which trait they would like to search for
 // then, call a function depending on which trait they want
 // and return the results of the filter
+//prompt ("Which trait would you like to search for?")
 
-function searchByGender(people){
-  let genderx = promptFor("what is the person's gender?",autoValid);
+function askForTrait(){
+let chosenTrait = promptFor("Which trait would you like to search for?")
+}
 
+function searchByOccupation(people){
+  let occupation = promptFor("What is the person's occupation?", autoValid);
 
-  let foundPerson = people.filter(function(potentialMatch){
-    if(potentialMatch.gender === genderx){
+  let foundOccupation = people.filter(function(potentialOccupation){
+    if(potentialOccupation.oneOccupation === occupation){
       return true;
     }
     else{
       return false;
     }
   })
-
-  return foundPerson;
+  //let foundOccupation = searchByOccupation(people)
+  return foundOccupation;
 
 }
+
+// function searchByWeight(people){
+//   let weight = promptFor("What is the person's weight?", autoValid);
+
+//   let foundWeight = people.filter(function(potentialWeight){
+//     if(potentialWeight.weight === )
+//   })
+// }
+
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
 let eyeColor = promptFor("What is the person's eye color?",autoValid);
 
 let foundEyeColor = people.filter(function(potentialEyeColor){
-  if(potentialEyeColor.eyeColor === eyeColor){
+  if(potentialEyeColor === eyecolor){
     return true;
   }
   else{
