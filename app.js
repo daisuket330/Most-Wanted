@@ -16,7 +16,7 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
-      searchResults = searchByTraits(people);
+      searchResults = searchByGender(people);
        // TODO: once we have filtered results from our search functions
         // write a function to list all the options and let the user pick one person to pass
        // into the mainMenu function
@@ -92,19 +92,43 @@ function searchByName(people){
 // TODO: write a function that prompts the user for which trait they would like to search for
 // then, call a function depending on which trait they want
 // and return the results of the filter
+//prompt ("Which trait would you like to search for?")
 
-function searchByTraits(people){
-  let results = searchByGender(people)
-  return results;
+function askForTrait(){
+let chosenTrait = promptFor("Which trait would you like to search for?")
+}
+
+function searchByOccupation(people){
+  let occupation = promptFor("What is the person's occupation?", autoValid);
+
+  let foundOccupation = people.filter(function(potentialOccupation){
+    if(potentialOccupation.oneOccupation === occupation){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  //let foundOccupation = searchByOccupation(people)
+  return foundOccupation;
 
 }
+
+// function searchByWeight(people){
+//   let weight = promptFor("What is the person's weight?", autoValid);
+
+//   let foundWeight = people.filter(function(potentialWeight){
+//     if(potentialWeight.weight === )
+//   })
+// }
+
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
 let eyeColor = promptFor("What is the person's eye color?", autoValid);
 
 let foundEyeColor = people.filter(function(potentialEyeColor){
-  if(potentialEyeColor === black){
+  if(potentialEyeColor === eyecolor){
     return true;
   }
   else{
@@ -160,6 +184,7 @@ function displayPerson(person){
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
 function promptFor(question, valid){
+  var isValid
   do{
     var response = prompt(question).trim();
     isValid = valid(response);
