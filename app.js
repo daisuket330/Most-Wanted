@@ -15,6 +15,7 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
+<<<<<<< HEAD
       searchResults = searchByTraits(people);
        break;
 }
@@ -30,6 +31,19 @@ function searchByGender(app){
        }
       console.log = ("Jen Pafoy");
     })
+=======
+      // TODO: search by traits
+      searchResults = searchByGender(people);
+       // TODO: once we have filtered results from our search functions
+        // write a function to list all the options and let the user pick one person to pass
+       // into the mainMenu function
+      break;
+      default:
+    app(people); // restart app
+      break;
+  }
+ 
+>>>>>>> 01095cfdc841920525549eb32b6131d20fb862a6
 
 function promptFor(gender, female ){
   do{
@@ -79,7 +93,114 @@ function promptFor(gender, female ){
   }
 }
 
+<<<<<<< HEAD
 //        //TODO: add other trait filter functions here.
+=======
+
+
+//#endregion
+
+//Filter functions.
+//Ideally you will have a function for each trait.
+/////////////////////////////////////////////////////////////////
+//#region 
+
+//nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
+function searchByName(people){
+  let firstName = promptFor("What is the person's first name?", autoValid);
+  let lastName = promptFor("What is the person's last name?", autoValid);
+
+  
+  let foundPerson = people.filter(function(potentialMatch){
+    if(potentialMatch.firstName === firstName && potentialMatch.lastName === lastName){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  // TODO: find the person single person object using the name they entered.
+  return foundPerson;
+}
+
+// TODO: write a function that prompts the user for which trait they would like to search for
+// then, call a function depending on which trait they want
+// and return the results of the filter
+//prompt ("Which trait would you like to search for?")
+
+function askForTrait(){
+let chosenTrait = promptFor("Which trait would you like to search for?")
+}
+
+function searchByOccupation(people){
+  let occupation = promptFor("What is the person's occupation?", autoValid);
+
+  let foundOccupation = people.filter(function(potentialOccupation){
+    if(potentialOccupation.oneOccupation === occupation){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  //let foundOccupation = searchByOccupation(people)
+  return foundOccupation;
+
+}
+
+// function searchByWeight(people){
+//   let weight = promptFor("What is the person's weight?", autoValid);
+
+//   let foundWeight = people.filter(function(potentialWeight){
+//     if(potentialWeight.weight === )
+//   })
+// }
+
+
+//unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
+function searchByEyeColor(people){
+let eyeColor = promptFor("What is the person's eye color?",autoValid);
+
+let foundEyeColor = people.filter(function(potentialEyeColor){
+  if(potentialEyeColor === eyecolor){
+    return true;
+  }
+  else{
+    return false;
+  }
+})
+  return foundEyeColor;
+}
+
+
+function searchByEyeColor(people){
+
+}
+
+//TODO: add other trait filter functions here.
+// let eyesColour = data[any]
+
+// let eyes = people.filter(searchByEyeColor(eyeColor)
+// searchByEyeColor(eyesColour)
+// function searchByEyeColor(people){
+//     for (let i=0; i<people.length; i++){
+//         console.log(people[i])
+//     }
+
+//     searchByEyeColor(eyesColour)
+    // let eyeColuor = promptFor("What is the person's eye color?", autoValid);
+    
+    // let foundEyeColor = people.filter(function{potentialEyeColor}{
+    //   if(potentialEyeColor.eyeColor === black){ 
+    //     return true;
+    //   }
+    //   else{
+    //     return false;
+    //   }
+    
+    
+      
+>>>>>>> 01095cfdc841920525549eb32b6131d20fb862a6
 
 
 
@@ -119,7 +240,12 @@ function promptFor(gender, female ){
 //response: Will capture the user input.
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
+<<<<<<< HEAD
 function promptFor(gender, female ){
+=======
+function promptFor(question, valid){
+  var isValid
+>>>>>>> 01095cfdc841920525549eb32b6131d20fb862a6
   do{
    var response = prompt(female).trim();
     isValid = (female);
