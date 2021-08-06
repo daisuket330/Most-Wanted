@@ -1,3 +1,4 @@
+2
 "use strict"
 
 
@@ -15,23 +16,6 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-<<<<<<< HEAD
-      searchResults = searchByTraits(people);
-       break;
-}
-function searchByGender(app){
-  let female = promptFor("What is the gender of the person?", autoValid);
-  let male= promptFor("what is the gender of the person",autoValid);
-}
-  let matchingGender = app.filter(function(potentialMatch){
-    while(potentialMatch.data===female){
-      return false;
-}
-       if (potentialMatch.gender===female) {
-       }
-      console.log = ("Jen Pafoy");
-    })
-=======
       // TODO: search by traits
       searchResults = searchByGender(people);
        // TODO: once we have filtered results from our search functions
@@ -43,7 +27,6 @@ function searchByGender(app){
       break;
   }
  
->>>>>>> 01095cfdc841920525549eb32b6131d20fb862a6
 
 function promptFor(gender, female ){
   do{
@@ -93,9 +76,6 @@ function promptFor(gender, female ){
   }
 }
 
-<<<<<<< HEAD
-//        //TODO: add other trait filter functions here.
-=======
 
 
 //#endregion
@@ -132,20 +112,17 @@ function askForTrait(){
 let chosenTrait = promptFor("Which trait would you like to search for?")
 }
 
-function searchByOccupation(people){
-  let occupation = promptFor("What is the person's occupation?", autoValid);
-
-  let foundOccupation = people.filter(function(potentialOccupation){
-    if(potentialOccupation.oneOccupation === occupation){
+function searchByGender(people){
+  let gender = promptFor("what is the person's gender?",autoValid);
+ let foundPerson = people.filter(function(potentialMatch){
+    if(potentialMatch.gender === gender){
       return true;
     }
     else{
       return false;
     }
   })
-  //let foundOccupation = searchByOccupation(people)
-  return foundOccupation;
-
+return foundPerson;
 }
 
 // function searchByWeight(people){
@@ -200,7 +177,6 @@ function searchByEyeColor(people){
     
     
       
->>>>>>> 01095cfdc841920525549eb32b6131d20fb862a6
 
 
 
@@ -240,12 +216,8 @@ function searchByEyeColor(people){
 //response: Will capture the user input.
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
-<<<<<<< HEAD
-function promptFor(gender, female ){
-=======
 function promptFor(question, valid){
   var isValid
->>>>>>> 01095cfdc841920525549eb32b6131d20fb862a6
   do{
    var response = prompt(female).trim();
     isValid = (female);
