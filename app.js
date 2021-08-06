@@ -16,7 +16,7 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
-      searchResults = searchByTraits(people);
+      searchResults = searchByGender(people);
        // TODO: once we have filtered results from our search functions
         // write a function to list all the options and let the user pick one person to pass
        // into the mainMenu function
@@ -94,28 +94,29 @@ function searchByName(people){
 // then, call a function depending on which trait they want
 // and return the results of the filter
 
-function searchByTraits(people){
+function searchByGender(people){
   let genderx = promptFor("what is the person's gender?",autoValid);
 
+
   let foundPerson = people.filter(function(potentialMatch){
-    if(potentialMatch.gender === genderx === female){
+    if(potentialMatch.gender === genderx){
       return true;
     }
     else{
       return false;
     }
   })
-  let foundp = searchByGender(people)
+
   return foundPerson;
 
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
-let eyeColor = promptFor("What is the person's eye color?", autoValid);
+let eyeColor = promptFor("What is the person's eye color?",autoValid);
 
 let foundEyeColor = people.filter(function(potentialEyeColor){
-  if(potentialEyeColor.eyeColor === black){
+  if(potentialEyeColor.eyeColor === eyeColor){
     return true;
   }
   else{
@@ -126,7 +127,7 @@ let foundEyeColor = people.filter(function(potentialEyeColor){
 }
 
 
-function searchByGender(people){
+function searchByEyeColor(people){
 
 }
 
@@ -193,6 +194,7 @@ function displayPerson(person){
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
 function promptFor(question, valid){
+  var isValid
   do{
     var response = prompt(question).trim();
     isValid = valid(response);
