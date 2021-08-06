@@ -17,7 +17,7 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
-      searchResults = searchByGender(people);
+      searchResults = searchByOccupation(people);
        // TODO: once we have filtered results from our search functions
         // write a function to list all the options and let the user pick one person to pass
        // into the mainMenu function
@@ -125,14 +125,18 @@ function searchByGender(people){
 return foundPerson;
 }
 
-// function searchByWeight(people){
-//   let weight = promptFor("What is the person's weight?", autoValid);
-
-//   let foundWeight = people.filter(function(potentialWeight){
-//     if(potentialWeight.weight === )
-//   })
-// }
-
+function searchByGender(people){
+  let genderx = promptFor("what is the person's gender?",autoValid);
+ let foundPerson = people.filter(function(potentialMatch){
+    if(potentialMatch.gender === genderx){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+return foundPerson;
+}
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
@@ -246,3 +250,8 @@ function promptFor(question, valid){
   
  }
 }
+<<<<<<< HEAD
+=======
+
+//#endregion
+>>>>>>> 7366e7a32ea0dcd0852a7faef8ec38b6481d636c
