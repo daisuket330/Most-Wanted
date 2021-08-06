@@ -77,6 +77,7 @@ function searchByName(people){
   let firstName = promptFor("What is the person's first name?", autoValid);
   let lastName = promptFor("What is the person's last name?", autoValid);
 
+  
   let foundPerson = people.filter(function(potentialMatch){
     if(potentialMatch.firstName === firstName && potentialMatch.lastName === lastName){
       return true;
@@ -94,22 +95,64 @@ function searchByName(people){
 // and return the results of the filter
 
 function searchByTraits(people){
-  let results = searchByGender(people)
-  return results;
+  let genderx = promptFor("what is the person's gender?",autoValid);
+
+  let foundPerson = people.filter(function(potentialMatch){
+    if(potentialMatch.gender === genderx === female){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  let foundp = searchByGender(people)
+  return foundPerson;
 
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
-  let eyeclrprmpt = prompt("what is the persons eye color?")
+let eyeColor = promptFor("What is the person's eye color?", autoValid);
 
+let foundEyeColor = people.filter(function(potentialEyeColor){
+  if(potentialEyeColor.eyeColor === black){
+    return true;
+  }
+  else{
+    return false;
+  }
+})
+  return foundEyeColor;
 }
+
 
 function searchByGender(people){
 
 }
 
 //TODO: add other trait filter functions here.
+// let eyesColour = data[any]
+
+// let eyes = people.filter(searchByEyeColor(eyeColor)
+// searchByEyeColor(eyesColour)
+// function searchByEyeColor(people){
+//     for (let i=0; i<people.length; i++){
+//         console.log(people[i])
+//     }
+
+//     searchByEyeColor(eyesColour)
+    // let eyeColuor = promptFor("What is the person's eye color?", autoValid);
+    
+    // let foundEyeColor = people.filter(function{potentialEyeColor}{
+    //   if(potentialEyeColor.eyeColor === black){ 
+    //     return true;
+    //   }
+    //   else{
+    //     return false;
+    //   }
+    
+    
+      
 
 
 
