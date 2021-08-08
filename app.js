@@ -16,7 +16,15 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
+      searchResults = searchByChosenTrait(people);
+
+      searchResults = searchByOccupation(people);
+
+      searchResults = searchByEyeColor(people);
+
       searchResults = searchByGender(people);
+
+      searchResults = searchByHeight
        // TODO: once we have filtered results from our search functions
         // write a function to list all the options and let the user pick one person to pass
        // into the mainMenu function
@@ -31,6 +39,7 @@ function app(people){
   mainMenu(searchResults, people);
 }
 
+
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
@@ -41,14 +50,21 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch(displayOption){
     case "info":
     // TODO: get person's info
+   // alert ("Persons dob: 4/10/1940")
+    //alert ("Gender: female")
+
     break;
+
     case "family":
     // TODO: get person's family
+   
+    alert ("Current Spouse: Jack Pafoy")
+
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -62,7 +78,6 @@ function mainMenu(person, people){
     return mainMenu(person, people); // ask again
   }
 }
-
 
 
 //#endregion
@@ -94,22 +109,39 @@ function searchByName(people){
 // and return the results of the filter
 //prompt ("Which trait would you like to search for?")
 
-function askForTrait(){
-let chosenTrait = promptFor("Which trait would you like to search for?")
+//incorporate while loop
+
+function searchByChosenTrait(people){
+  let traits = promptFor("Which trait would you like to search for?", autoValid)
+  while (people[data]){
+    foundChosenTrait += traits [data];
+     i++;
+   }
+  let foundChosenTrait = people.filter(function(potentialChosenTrait){
+  if (potentialChosenTrait.people ===traits){
+    return true;
+    }
+  else{
+    return false;
+    }
+  })
+  return foundChosenTrait
 }
+
+
+
 
 function searchByOccupation(people){
   let occupation = promptFor("What is the person's occupation?", autoValid);
 
   let foundOccupation = people.filter(function(potentialOccupation){
-    if(potentialOccupation.oneOccupation === occupation){
+    if(potentialOccupation.occupation === occupation){
       return true;
     }
     else{
       return false;
     }
   })
-  //let foundOccupation = searchByOccupation(people)
   return foundOccupation;
 
 }
@@ -118,17 +150,51 @@ function searchByOccupation(people){
 //   let weight = promptFor("What is the person's weight?", autoValid);
 
 //   let foundWeight = people.filter(function(potentialWeight){
-//     if(potentialWeight.weight === )
+//     if(potentialWeight.weight === weight){
+//       return true;
+//     }
+//     else{
+//       return false;
+//     }
 //   })
+//   return foundWeight;
+
 // }
 
+function searchByHeight(people){
+  let height = promptFor("What is the person's height?", autoValid);
+
+  let foundHeight = people.filter(function(potentialHeight){
+    if(potentialHeight.height === height){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return foundHeight;
+
+}
+
+function searchByGender(people){
+  let genderx = promptFor("what is the person's gender?",autoValid);
+ let foundPerson = people.filter(function(potentialMatch){
+    if(potentialMatch.gender === genderx){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+return foundPerson;
+}
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
 let eyeColor = promptFor("What is the person's eye color?", autoValid);
 
 let foundEyeColor = people.filter(function(potentialEyeColor){
-  if(potentialEyeColor === eyecolor){
+  if(potentialEyeColor.eyeColor === eyeColor){
     return true;
   }
   else{
@@ -139,9 +205,6 @@ let foundEyeColor = people.filter(function(potentialEyeColor){
 }
 
 
-function searchByGender(people){
-
-}
 
 //TODO: add other trait filter functions here.
 
