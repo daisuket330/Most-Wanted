@@ -17,6 +17,7 @@ function app(people){
     case 'no':
       // TODO: search by traits
       searchResults = searchByOccupation(people);
+      
        // TODO: once we have filtered results from our search functions
         // write a function to list all the options and let the user pick one person to pass
        // into the mainMenu function
@@ -26,7 +27,7 @@ function app(people){
       break;
   }
  
-
+// function filterByTraits(people)
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
 }
@@ -41,10 +42,15 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  for (let i=0; i<=person;i++);
+  let displayOption = promptFor("Found " + person[0].firstName[0] + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  
+  
+
 
   switch(displayOption){
     case "info":
+      alert("this is this person's: gender,dob,height,weight,eye colour,occupation,parents,spouse")
     // TODO: get person's info
     break;
     case "family":
@@ -103,7 +109,8 @@ function searchByOccupation(people){
   let occupation = promptFor("What is the person's occupation?", autoValid);
 
   let foundOccupation = people.filter(function(potentialOccupation){
-    if(potentialOccupation.oneOccupation === occupation){
+    for (let i=0;i<=people.occupation;i++)
+    if(potentialOccupation.occupation === occupation){
       return true;
     }
     else{
