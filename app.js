@@ -16,13 +16,7 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
-      searchResults = searchByOccupation(people);
-
-      searchResults = searchByGender (people);
-
-      searchResults = searchByEyeColor (people);
-
-      searchResults = searchByHeight (people);
+      searchResults = searchByTraits(people);
 
        // TODO: once we have filtered results from our search functions
         // write a function to list all the options and let the user pick one person to pass
@@ -54,8 +48,7 @@ function mainMenu(person, people){
     case "info":
       alert("this is this person's: gender,dob,height,weight,eye colour,occupation,parents,spouse")
     // TODO: get person's info
-    alert("Person's dob: 04/10/1940")
-    alert("Gender:female")
+   
 
     break;
     case "family":
@@ -106,68 +99,99 @@ function searchByName(people){
 // and return the results of the filter
 //prompt ("Which trait would you like to search for?")
 
-function askForTrait(){
-let trait = promptFor("Which trait would you like to search for?")
 
-let chosenTrait = people.filter(function(potentialTrait){
-
-  if(potentialTrait.trait === trait){
-    return true;
-  }
-  else{
-    return false;
-  }
-})
-  return chosenTrait;
-}
 //TODO: add other trait filter functions here.
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 
+function searchByDob(people){
+  let userDobInput = promptFor('Please enter the persons date of birth using M/DD/YYYY format (Dont put a zero if it is a single digit month',autoValid);
+  let listOfDob =[]
+  let foundDob = people.filter(function(potentialTraitMatch){
+    if(potentialTraitMatch.dob == userDobInput){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  for(let i = 0; i < foundDob.length; i++){
+      listOfDob.push(' ' + foundDob[i].firstName + ' ' + foundDob[i].lastName)
+  }
+  alert(`${listOfDob} have the date of birth of ${userDobInput}.`,autoValid);
+    return foundDob;
+
+}
+
 function searchByEyeColor(people){
-let eyeColor = promptFor("What is the person's eye color?",autoValid);
-
-let foundEyeColor = people.filter(function(potentialEyeColor){
-
-  if(potentialEyeColor.eyeColor === eyeColor){
-    return true;
+let userEyeColoeInput = promptFor('Please enter the persons eye color',autoValid);
+  let listOfEyes =[]
+  let foundEyeColor = people.filter(function(potentialTraitMatch){
+    if(potentialTraitMatch.eyeColor === userEyeColoeInput){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  for(let i = 0; i < foundEyeColor.length; i++){
+      listOfEyes.push(' ' + foundEyeColor[i].firstName + ' ' + foundEyeColor[i].lastName)
   }
-  else{
-    return false;
-  }
-})
-  return foundEyeColor;
+      alert(`${listOfEyes} all have ${userEyeColoeInput} eyes`,autoValid);
+      return foundEyeColor;
 }
 
 function searchByHeight(people){
-  let height = promptFor("What is the person's height?", autoValid);
-
-  let foundHeight = people.filter(function(potentialHeight){
-    if(potentialHeight.height=== height){
+  let userHeightInput = promptFor('Please enter the persons height in inches',autoValid);
+  let listOfHeights =[]
+  let foundHeight = people.filter(function(potentialTraitMatch){
+    if(potentialTraitMatch.height == userHeightInput){
       return true;
     }
     else{
       return false;
     }
   })
-  return foundHeight;
+  for(let i = 0; i < foundHeight.length; i++){
+      listOfHeights.push(' ' + foundHeight[i].firstName + ' ' + foundHeight[i].lastName)
+  }
+  alert(`${listOfHeights} are ${userHeightInput} inches tall`,autoValid);
+    return foundHeight;
+}
+
+functio searchByWeight(people){
+  let userWeightInput = promptFor('Please enter the persons weight',autoValid);
+  let listOfWeights =[]
+  let foundWeight = people.filter(function(potentialTraitMatch){
+    if(potentialTraitMatch.weight == userWeightInput){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  for(let i = 0; i < foundWeight.length; i++){
+      listOfWeights.push(' ' + foundWeight[i].firstName + ' ' + foundWeight[i].lastName)
+  }
+  alert(`${listOfWeights} are ${userWeightInput} pounds`,autoValid);
+    return foundWeight;
 }
 
 function searchByOccupation(people){
-  let occupation = promptFor("What is the person's occupation?", autoValid);
-
-  let foundOccupation = people.filter(function(potentialOccupation){
-    for (let i=0;i<=people.occupation;i++)
-    if(potentialOccupation.occupation === occupation){
+ let listOfOccupations =[]
+  let foundOccupation = people.filter(function(potentialTraitMatch){
+    if(potentialTraitMatch.occupation === userOccupationInput){
       return true;
     }
     else{
       return false;
     }
   })
-  return foundOccupation;
-
+  for(let i = 0; i < foundOccupation.length; i++){
+      listOfOccupations.push(' ' + foundOccupation[i].firstName + ' ' + foundOccupation[i].lastName)
+  }
+  alert(`${listOfOccupations} are ${userOccupationInput}s`,autoValid);
+    return foundOccupation;
 }
-
 function searchByGender(people){
 let genderx = promptFor("What is the person's gender?",autoValid);
 
@@ -209,8 +233,49 @@ function displayPerson(person){
 }
 
 //#endregion
+function searchByTraits (people) {
+  let listOfTraits = people;
+  let userIsHappy = false;
+  let finalResult = [];
+  while (userIsHappy === false) { 
+       let userTraitInput = parseInt(promptFor('Please enter another trait youd like to search for? Type "1" for eyes, "2" for gender, "3" for occupation, "4" for height, "5" for weight, or "6" for date of birth. Or, if you have found the person you are looking for, enter "7"',autoValid));
+      if(userTraitInput === 1){
+        listOfTraits = searchByEyeColor(listOfTraits)
+      }if(userTraitInput === 2){
+        listOfTraits = searchByGender(listOfTraits);
+      }if(userTraitInput === 3){
+        listOfTraits = searchByOccupation(listOfTraits);
+      }if(userTraitInput === 4){
+        listOfTraits = searchByHeight(listOfTraits);
+      }if(userTraitInput === 5){
+        listOfTraits = weightSearch(listOfTraits);
+      }if(userTraitInput === 6){
+        listOfTraits = dobSearch(listOfTraits);
+      }if (userTraitInput === 7) {
+        userIsHappy = true;
+      }
+    }
+    if (finalResult.length = 0) {
+      alert ('No one was found given your current filter. Please try again')
+      searchByTraits(people)
+    }
+    for (let i = 0; i < listOfTraits.length; i++) {
+      finalResult.push(' ' + listOfTraits[i].firstName + ' ' + listOfTraits[i].lastName)
+      
+      
+    }
 
-
+ let foundPersons = promptFor(`Your filters have resulted in ${finalResult}. Type the first name of the person you would like to find the information on.`, autoValid);
+    foundPersons = foundPersons.charAt(0).toUpperCase() + foundPersons.slice(1);
+    let firstPerson = listOfTraits.filter(function(potentialTraitMatch){
+      if(potentialTraitMatch.firstName === foundPersons){
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+    return mainMenu(firstPerson[0],people); 
 
 //Validation functions.
 //Functions to validate user input.
